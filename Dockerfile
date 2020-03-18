@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.11
+FROM lsiobase/ubuntu:arm64v8-bionic
 
 ARG GOLANG_VERSION=1.14
 
@@ -6,11 +6,9 @@ ENV GOPATH="$HOME/go"
 ENV PATH="${PATH}:/usr/local/go/bin:$GOPATH/bin"
 
 RUN echo ">>>>>> update dependencies <<<<<<" \
-    && apk update && apk add git yarn build-base gcc abuild binutils binutils-doc gcc-doc \
+    && apt-get update && apt-get install -y git yarn build-base gcc abuild binutils binutils-doc gcc-doc \
     && echo ">>>>>> install golang <<<<<<" \
-    && wget -O golang.tar.gz https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz \
-    && mkdir /lib64 \
-    && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 \
+    && wget -O golang.tar.gz https://dl.google.com/go/go${GOLANG_VERSION}.linux-arm64.tar.gz \
     && tar -C /usr/local -xzf golang.tar.gz
 
 ADD entrypoint.sh /entrypoint.sh
