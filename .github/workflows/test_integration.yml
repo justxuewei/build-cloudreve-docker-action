@@ -2,6 +2,7 @@ name: Build Test
 on: [push]
 jobs:
   build:
+    # ARM is not supported by GitHub Actions
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
