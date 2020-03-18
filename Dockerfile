@@ -7,7 +7,7 @@ ENV PATH="${PATH}:/usr/local/go/bin:$GOPATH/bin"
 
 RUN echo ">>>>>> update dependencies <<<<<<" \
     && apt-get update \
-    && apt-get install -y git yarn build-base gcc abuild binutils binutils-doc gcc-doc \
+    && apt-get install -y git yarn \
     && echo ">>>>>> install golang <<<<<<" \
     && wget -O golang.tar.gz https://dl.google.com/go/go${GOLANG_VERSION}.linux-arm64.tar.gz \
     && tar -C /usr/local -xzf golang.tar.gz
