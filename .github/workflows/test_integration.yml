@@ -6,7 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: build-cloudreve
-      uses: xavier-niu/build-cloudreve-docker-action@master
+      uses: xavier-niu/build-cloudreve-docker-action@arm64
     - name: archive production artifacts
       uses: actions/upload-artifact@v1
       with:
