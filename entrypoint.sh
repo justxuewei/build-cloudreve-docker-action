@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo ">>>>>> clone Cloudreve from git <<<<<<"
 git clone --recurse-submodules https://github.com/cloudreve/Cloudreve.git
 cd Cloudreve

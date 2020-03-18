@@ -1,0 +1,14 @@
+name: Build Test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: build-cloudreve
+      uses: xavier-niu/build-cloudreve-docker-action@master
+    - name: archive production artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: cloudreve
+        path: Cloudreve/cloudreve

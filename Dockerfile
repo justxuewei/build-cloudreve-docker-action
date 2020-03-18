@@ -1,9 +1,9 @@
-FROM alpine:3.10
+FROM lsiobase/alpine:3.11
 
 ARG GOLANG_VERSION=1.14
 
-ENV PATH="${PATH}:/usr/local/go/bin:$GOPATH/bin"
 ENV GOPATH="$HOME/go"
+ENV PATH="${PATH}:/usr/local/go/bin:$GOPATH/bin"
 
 RUN echo ">>>>>> update dependencies <<<<<<" \
     && apk update && apk add git yarn build-base gcc abuild binutils binutils-doc gcc-doc \
@@ -13,6 +13,6 @@ RUN echo ">>>>>> update dependencies <<<<<<" \
     && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 \
     && tar -C /usr/local -xzf golang.tar.gz
 
-COPY entrypoint.sh /entrypoint.sh
+ADD entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
